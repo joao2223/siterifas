@@ -1,0 +1,83 @@
+.logo {
+    width: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.titulo_rifas {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 29.49px;
+    color: #114823;
+    padding-bottom: 1rem;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    color: #114823;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.centraliza {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    background-image: linear-gradient(to bottom, #11482300 0%, #31B55C 50%);
+    width: 18rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.preco {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    line-height: 17.7px;
+}
+
+.imagem_rifa {
+    width: 15rem;
+    height: 15rem;
+}
+
+.descricao {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 17.7px;
+}
+
+.data {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 17.7px;
+}
+
+.botao_comprar_rifas {
+    background-color: #114823;
+    border: none;
+    padding: 1rem;
+    color: #CBCBCB;
+    margin-bottom: 1rem;
+}
+
+.botao_comprar_rifas:hover {
+    cursor: pointer;
+    background-color: #0c3419;
+}

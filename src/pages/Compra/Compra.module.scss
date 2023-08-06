@@ -1,0 +1,221 @@
+.logo {
+    width: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    color: #114823;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.info_rifa {
+    display: flex;
+    justify-content: center;
+}
+
+.margin_titulo {
+    margin-left: 18rem;
+}
+
+.compra {
+    display: flex;
+    justify-content: space-around;
+    background-color: #CBCBCB;
+}
+
+.container {
+    width: 50%;
+}
+
+.dois_incrementos {
+    display: flex;
+    justify-content: center;
+}
+
+.incremento_unico {
+    background-color: #278a48;
+    width: 20rem;
+    height: 8rem;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+}
+
+.valor_incremento {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    font-size: 24px;
+    
+    color: #CBCBCB;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.botao_incremento {
+    background-color: #31B55C;
+    border: none;
+    padding: 1rem;
+    color: #CBCBCB;
+    width: 100%;
+}
+
+.botao_incremento:hover {
+    cursor: pointer;
+    background-color: #114823;
+}
+
+.centraliza {
+    display: flex;
+    justify-content: center;
+}
+
+.incremento_um_em_um {
+    display: flex;
+    justify-content: space-around;
+    background-color: #114823;
+    width: 30rem;
+    border-radius: 16px;
+    height: 4rem;
+}
+
+.botao_operacao {
+    border: none;
+    background-color: #114823;
+    font-size: 24px;
+    color: #31B55C;
+}
+
+.botao_operacao:hover {
+    cursor: pointer;
+}
+
+.total_compra {
+    background-color: #278a48;
+    width: 40%;
+    margin-top: 1rem;
+    border-radius: 8px;
+    height: 5rem;
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+}
+
+.valor_total {
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.cabecalho_modal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo_modal {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    color: #114823;
+    font-size: 24px;
+}
+
+.botao_fecha_modal {
+    background-color: white;
+    border: none;
+    font-size: 24px;
+}
+
+.botao_fecha_modal:hover {
+    cursor: pointer;
+}
+
+.botao_finalizar {
+    width: 100%;
+    background-image: linear-gradient(to right, #31B55C 0%, #114823 50%);
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    height: 5rem;
+    border-radius: 8px;
+    border: none;
+    margin-top: 1rem;
+}
+
+.botao_finalizar:hover {
+    cursor: pointer;
+}
+
+.container_modal {
+    display: flex;
+    justify-content: space-around;
+}
+
+.formulario_finaliza_compra {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nome_campo_formulario {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    color: #114823;
+    font-size: 20px;
+    padding-bottom: 0.5rem;
+}
+
+.input_formulario {
+    font-family: 'Abhaya Libre ExtraBold';
+    color: #114823;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.input_formulario_file {
+    font-family: 'Abhaya Libre ExtraBold';
+    color: #114823;
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.botao_enviar {
+    background-color: #31B55C;
+    border-color: #31B55C;
+    border-radius: 4px;
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+}
+
+.botao_enviar:hover {
+    cursor: pointer;
+    background-color: #278a48;
+}
+
+.texto_pix {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 18px;
+    padding-bottom: 0.5rem;
+}
+
+.mensagem_comprar {
+    width: 40rem;
+    margin-top: 5rem;
+}

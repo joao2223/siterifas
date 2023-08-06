@@ -1,0 +1,50 @@
+.logo {
+    width: 5rem;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    color: #114823;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.titulo {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 29.49px;
+    color: #114823;
+    padding-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botao_rifa {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #31B55C;
+    border-color: #31B55C;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.imagem_rifa {
+    width: 8rem;
+}

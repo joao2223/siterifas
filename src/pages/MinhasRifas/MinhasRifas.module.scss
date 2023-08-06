@@ -1,0 +1,68 @@
+.logo {
+    width: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    color: #114823;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 1rem;
+}
+
+.titulo {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 29.49px;
+    color: #114823;
+    padding-bottom: 1rem;
+}
+
+.input {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.botao {
+    background-color: #31B55C;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 400;
+    font-size: 20px;
+    padding: 0.2rem;
+    color: white;
+}
+
+.botao:hover {
+    background-color: #114823;
+    cursor: pointer;
+}
+
+.resultado_busca {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.infos {
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.23px;
+    color: #114823;
+}
