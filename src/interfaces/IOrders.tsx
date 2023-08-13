@@ -4,11 +4,14 @@ export default interface IOrder {
         id: number;
         name: string;
         phone: string;
-    };
+        file: string;
+        userStatus: string;
+        momentCreated: string;
+        };
     items: Array<{
         quantity: number;
-        quantityRaffle: number;
         price: string;
+        generatedNumbers: Array<number>;
         subTotal: string;
         raffle: {
             id: number;
@@ -18,7 +21,6 @@ export default interface IOrder {
             price: string;
             imgUrl: string;
             raffleStatus: string;
-            randomNumbers: Array<number>;
-        };
-    }>;
+        },
+    }>,    
 }

@@ -1,94 +1,125 @@
-import logo from "../../assets/logo.svg";
-import styles from "./Inicio.module.scss";
-import rifas from "../../assets/Inicio/rifas.svg";
-import sorteios from "../../assets/Inicio/sorteios.svg";
-import rifas_facil from '../../assets/Inicio/rifas_facil.svg'
-import pai_do_sorteio from '../../assets/Inicio/paidosorteio.svg'
-import ver_tudo from '../../assets/Inicio/ver_tudo.svg'
-import rifas_palavra from '../../assets/Inicio/rifas_palavra.svg'
-import sorteio_palavra from '../../assets/Inicio/sorteio_palavra.svg'
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import IRifa from '../../interfaces/IRifa';
+import styles from './Inicio.module.scss';
+import logo from '../../assets/logo.svg';
+import rifados from '../../assets/Inicio/rifados.jpg';
+import sorte from '../../assets/Inicio/sorte.svg';
+import Modal from 'react-modal';
+import IOrders from '../../interfaces/IOrders';
 
 export default function Inicio() {
-  const navigate = useNavigate()
+    const [rifas, setRifas] = useState<IRifa[]>();
+    const [orders, setOrders] = useState<IOrders[]>();
+    const [termoDeBusca, setTermoDeBusca] = useState<string>("");
+    const [resultadosBusca, setResultadosBusca] = useState<IOrders[]>([]);;
+    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
 
-  function redirecionarParaRifas() {
-    navigate('/rifas', { replace: true })
-  }
+    useEffect(() => {
+        axios.get('http://localhost:8080/raffles')
+            .then(resposta => {
+                setRifas(resposta.data);
+            })
+            .catch(erro => {
+                console.log(erro);
+            });
+    }, []);
 
-  function redirecionarParaSorteios() {
-    navigate('/sorteios', { replace: true })
-  }
+    useEffect(() => {
+        axios.get('http://localhost:8080/orders')
+            .then(resposta => {
+                setOrders(resposta.data);
+                console.log(resposta)
+            })
+            .catch(erro => {
+                console.log(erro);
+            });
+    }, []);
 
-  function redirecionarParaMinhasRifas() {
-    navigate('/minhasrifas', { replace: true })
-  }
+    function procurarCliente() {
+        const resultados = orders?.filter(order => order.client.phone === termoDeBusca);
+        setResultadosBusca(resultados || []);
+    }
 
+    function redirecionarParaCompra(id: number) {
+        navigate(`/compra/${id}`, { replace: true });
+    }
 
-  return (
-    <>
-      <div className={styles.cabecalho}>
-        <img src={logo} alt="logo Paido sorteio" className={styles.logo} />
-        <div>
-          <Link className={styles.link} to='/'>Inicio</Link>
-          <Link className={styles.link} to='/rifas'>Rifas</Link>
-          <Link className={styles.link} to='/sorteios'>Sorteios</Link>
-          <Link className={styles.link} to='/minhasrifas'>Minhas rifas</Link>
-        </div>
-      </div>
-      <section className={styles.container}>
-        <div>
-          <div>
-            <img src={pai_do_sorteio} alt="" className={styles.pai_do_sorteio} />
-            <img src={rifas_facil} alt="" />
-          </div>
-          <div>
-            <p className={styles.bem_vindo}>
-              Bem vindo ao Nosso Mundo de Emoção e Sorte
-            </p>
-            <p className={styles.texto_bem_vindo}>
-              Seja parte da diversão e da emoção das nossas incríveis rifas!
-              Aqui é o lugar onde a sorte se encontra com a oportunidade, dando
-              a todos a chance de ganhar prêmios emocionantes enquanto apoiam
-              causas incríveis.
-            </p>
-            <button className={styles.botao_ver_tudo} onClick={() => redirecionarParaMinhasRifas()}><img src={ver_tudo} alt="" /></button>
-          </div>
-        </div>
+    function handleOpenModal() {
+        setShowModal(true);
+    }
 
-        <div className={styles.container_botoes}>
-          <div className={styles.container_botao}>
-            <button className={styles.botao_nao_clicavel}><img src={rifas_palavra} alt="" /></button>
-            <button className={styles.botao_clicavel} onClick={() => redirecionarParaSorteios()}>
-              <img
-                className={styles.imagem_botao}
-                src={sorteios}
-                alt="imagem sorteios"
-              />
-              <img src={sorteio_palavra} alt="" className={styles.nome_botao} />
-              <p className={styles.info_botao}>
-                Assista à contagem regressiva para o sorteio. Mantenha seus
-                dedos cruzados enquanto o destino decide o vencedor!
-              </p>
-            </button>
-          </div>
-          <div className={styles.container_botao}>
-            <button className={styles.botao_clicavel_rifas} onClick={() => redirecionarParaRifas()} >
-              <img
-                className={styles.imagem_botao}
-                src={rifas}
-                alt="imagem rifas"
-              />
-              <img src={rifas_palavra} alt="" className={styles.nome_botao} />
-              <p className={styles.info_botao}>
-                Navegue por nossa seleção de rifas atuais e escolha aquela que
-                desperta seu interesse
-              </p>
-            </button>
-            <button className={styles.botao_nao_clicavel}><img src={sorteio_palavra} alt="" /></button>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+    function handleCloseModal() {
+        setShowModal(false);
+    }
+
+    return (
+        <>
+            <div className={styles.cabecalho}>
+                <img src={logo} alt="logo paido sorteio" className={styles.logo} />
+                <button className={styles.botao_busca}>
+                    <AiOutlineSearch />
+                    <p className={styles.nome_botao_busca} onClick={handleOpenModal}>MEUS NÚMEROS</p>
+                </button>
+            </div>
+
+            <img src={rifados} alt="" className={styles.imagem_inicio} />
+
+            <div className={styles.centraliza}>
+                <section className={styles.container_rifas}>
+                    <div className={styles.titulo_secao}>
+                        <img src={sorte} alt="" className={styles.sorte} />
+                        <div className={styles.texto_mais_titulo_rifas}>
+                            <p className={styles.texto_titulo_rifas}>NOSSAS PREMIAÇÕES</p>
+                        </div>
+                    </div>
+                    <div className={styles.centraliza}>
+                        {rifas?.map((rifa) => (
+                            rifa.raffleStatus === 'OPEN' && (
+                                <button key={rifa.id} className={styles.card} onClick={() => redirecionarParaCompra(rifa.id)}>
+                                    <img src={rifa.imgUrl} alt={rifa.description} className={styles.imagem_rifa} />
+                                    <div className={styles.container_rifas_info}>
+                                        <p className={styles.descricao}>{rifa.description}</p>
+                                        <p className={styles.preco}>{rifa.price}</p>
+                                        <button className={styles.disponivel}>Disponível</button>
+                                    </div>
+                                </button>
+                            )
+                        ))}
+                    </div>
+                </section>
+            </div>
+
+            <Modal
+                isOpen={showModal}
+                onRequestClose={handleCloseModal}
+                contentLabel="Login"
+                className={styles.modalContent}
+                overlayClassName={styles.modalOverlay}
+            >
+                <div className={styles.modalHeader}>
+                    <h2>Login</h2>
+                    <button className={styles.modalCloseButton} onClick={handleCloseModal}>
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <hr className={styles.modalLine} />
+                <p>Para consultar seus pedidos, digite o número de WhatsApp usado na hora da compra:</p>
+                <input
+                    type="text"
+                    name="Telefone"
+                    className={styles.modalInput}
+                    value={termoDeBusca}
+                    onChange={(e) => setTermoDeBusca(e.target.value)}
+                />
+                <button className={styles.modalButton} onClick={() => {
+                    procurarCliente();
+                    navigate(`/consulta`, { state: { telefone: termoDeBusca } });
+                }}>Consultar</button>
+            </Modal>
+        </>
+    );
 }

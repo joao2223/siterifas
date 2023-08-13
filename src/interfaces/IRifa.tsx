@@ -6,5 +6,5 @@ export default interface IRifa {
     price: string
     imgUrl: string
     raffleStatus: string
-    randomNumbers: []
+    momentCreated: string
   }

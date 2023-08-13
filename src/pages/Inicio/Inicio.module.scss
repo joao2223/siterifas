@@ -1,135 +1,253 @@
-.logo {
-    width: 5rem;
-    padding-bottom: 1rem;
-    padding-top: 2rem;
-}
-
 .cabecalho {
     display: flex;
     justify-content: space-around;
+    background-color: black;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
     align-items: center;
-    padding-bottom: 1rem;
 }
 
-.link {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 400;
-    font-size: 20px;
-    color: #114823;
-    text-decoration: none;
-    text-align: center;
-    margin-right: 1rem;
-    padding-bottom: 1rem;
+.logo {
+    width: 4rem;
 }
 
-
-.container {
+.botao_busca {
     display: flex;
-    flex-direction: row;
-    margin-right: 12rem;
-    margin-left: 12rem;
-}
-
-.pai_do_sorteio {
-    padding-bottom: 1rem;
-}
-
-.bem_vindo {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 29.49px;
-    color: #114823;
-}
-
-.texto_bem_vindo {
+    align-items: center;
+    background-color: #31B55C;
+    border-radius: 14px;
+    border: none;
     font-family: 'Abhaya Libre';
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21.23px;
-    color: #114823;
+    color: #CBCBCB;
+    height: 2rem;
 }
 
-.botao_ver_tudo {
-    background-color: #31B55C;
+.botao_busca:hover {
+    background-color: #268c48;
+    cursor: pointer;
+}
+
+.nome_botao_busca {
+    margin-left: 0.5rem;
+}
+
+.imagem_inicio {
+    width: 70rem;
+    padding-top: 2rem;
+    border-radius: 8px;
+}
+
+.centraliza {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container_rifas {
+    margin-top: 2rem;
+    background-color: #195c2f;
+    width: 70rem;
+    border-radius: 1rem;
+
+}
+.titulo_secao {
+    display: flex;
+    margin-left: 0.5rem;
+}
+
+.sorte {
+    width: 3rem;
+    margin-right: 0.5rem;
+}
+
+.texto_titulo_rifas {
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 20px;
+    color: #CBCBCB;
+}
+
+.texto_rifas {
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 16px;
+    color: #CBCBCB;
+}
+
+.card {
+    background-color: #268c48;
+    width: 40%;
     border: none;
+    margin-bottom: 1rem;
+    display: flex;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+
+.imagem_rifa {
+    width: 12rem;
+    margin-right: 2rem;
+}
+
+.descricao {
+    font-family: 'Abhaya Libre';
+    font-weight: 600;
+    font-size: 16px;
+    color: #CBCBCB;
+    text-align: left;
+}
+
+.preco {
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 16px;
+    color: #CBCBCB;
+    text-align: left;
+}
+
+.disponivel {
+    background-color: #195c2f;
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 16px;
+    color: #CBCBCB;
+    border: none;
+    border-radius: 16px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    background-color: #fff;
+    border-radius: 8px;
     padding: 1rem;
-    color: #CBCBCB;
+    max-width: 400px;
 }
 
-.botao_ver_tudo:hover{
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalCloseButton {
+    background-color: transparent;
+    color: #31B55C;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
-    background-color: #268c48;
 }
 
-.container_botoes {
-    display: flex;
-    flex-direction: row;
-    margin-left: 1rem;
+.modalCloseButton span {
+    line-height: 1;
 }
 
-.botao_nao_clicavel {
-    background-color: #31B55C;
-    border: none;
-    color: #CBCBCB;
-    font-family: 'Luckiest Guy';
-    font-size: 26px;
-    line-height: 25px;
-    width: 18rem;
-    height: 15rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;   
-    align-items: center;
-    padding-top: 2rem;
-    padding-right: 1rem;
+.modalLine {
+    width: 100%;
+    border: 1px solid #31B55C;
 }
 
-.botao_clicavel{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: linear-gradient(to bottom, #11482300 0%, #31B55C 50%);
-    width: 18rem;
-    height: 15rem;
-    justify-content: center;
-    border: none;
-    margin-bottom: 1rem;
-    padding-top: 2rem;
-    
-}
-
-.botao_clicavel:hover {
-    cursor: pointer;
-    background-color: #268c48;
-}
-
-.botao_clicavel_rifas{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: linear-gradient(to bottom, #11482300 0%, #31B55C 50%);
-    width: 18rem;
-    height: 15rem;
-    justify-content: center;
-    border: none;
-    margin-bottom: 1rem;
+.modalInput {
+    width: 100%;
+    padding: 0.5rem;
     margin-top: 1rem;
-    padding-top: 2rem;
+    border: 1px solid #31B55C;
+    border-radius: 4px;
+    box-sizing: border-box; /* Adicionamos para incluir o padding no tamanho total */
 }
-.botao_clicavel_rifas:hover {
+
+.modalButton {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background-color: #31B55C;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+}
+
+.modalButton:hover {
     background-color: #268c48;
 }
 
-.nome_botao {
-    padding-top: 1rem;
+@media screen and (max-width: 768px) {
+    .cabecalho {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .logo {
+        /* Ajuste o tamanho da logo para telas menores */
+        width: 3rem;
+    }
+
+    .botao_busca {
+        /* Ajuste o tamanho do botão para telas menores */
+        font-size: 14px;
+        height: 1.5rem;
+    }
+
+    .imagem_inicio {
+        /* Ajuste o tamanho da imagem para telas menores */
+        width: 100%;
+        padding-top: 1rem;
+    }
+
+    .centraliza {
+        /* Ajuste a centralização para telas menores */
+        justify-content: flex-start;
+    }
+
+    .container_rifas {
+        /* Ajuste o tamanho do container para telas menores */
+        width: 100%;
+    }
+
+    .card {
+        /* Ajuste o tamanho dos cards para telas menores */
+        width: 100%;
+    }
+
+    .imagem_rifa {
+        /* Ajuste o tamanho da imagem dos cards para telas menores */
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .card {
+        background-color: #268c48;
+        width: 100%;
+        border: none;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .container_rifas_info {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
-.info_botao {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 800;
-    line-height: 17.7px;
-}

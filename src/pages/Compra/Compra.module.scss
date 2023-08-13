@@ -1,38 +1,106 @@
-.logo {
-    width: 5rem;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-}
-
 .cabecalho {
     display: flex;
     justify-content: space-around;
+    background-color: black;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
     align-items: center;
+    width: 100%;
 }
 
-.link {
-    font-family: 'Abhaya Libre ExtraBold';
+.logo {
+    width: 4rem;
+}
+
+.botao_busca {
+    display: flex;
+    align-items: center;
+    background-color: #31B55C;
+    border-radius: 14px;
+    border: none;
+    font-family: 'Abhaya Libre';
     font-weight: 400;
-    font-size: 20px;
-    color: #114823;
-    text-decoration: none;
-    text-align: center;
-    margin-right: 1rem;
+    font-size: 16px;
+    line-height: 21.23px;
+    color: #CBCBCB;
+    height: 2rem;
 }
 
-.info_rifa {
+.botao_busca:hover {
+    background-color: #268c48;
+    cursor: pointer;
+}
+
+.titulo_modal {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-weight: 800;
+    color: #114823;
+    font-size: 24px;
+}
+
+.secao_quantidade {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quantidade_escolha {
     display: flex;
     justify-content: center;
 }
 
-.margin_titulo {
-    margin-left: 18rem;
+.container_compra {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
-.compra {
+.imagem_rifa {
+    width: 32rem;
+    margin-right: 1rem;
+    height: 24rem;
+}
+
+.descricao_rifa {
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 24px;
+    color: #114823;
+}
+
+.botao_preco {
+    width: 40rem;
+    background-color: #31B55C;
+    border-radius: 8px;
+    border: none;
+}
+
+.nome_botao_preco {
+    font-family: 'Abhaya Libre';
+    font-weight: 400;
+    font-size: 24px;
+    color: #CBCBCB;
+}
+
+.preco_botao_preco {
+    font-family: 'Abhaya Libre';
+    font-weight: 600;
+    font-size: 32px;
+    color: #CBCBCB;
+}
+
+.automaticos {
     display: flex;
-    justify-content: space-around;
-    background-color: #CBCBCB;
+    align-items: center;
+    font-family: 'Abhaya Libre';
+    font-weight: 600;
+    font-size: 24px;
+    color: #CBCBCB;
+    background-color: #31B55C;
+    margin-top: 1rem;
+    border-radius: 8px;
+    border: solid 1px;
+    border-color: yellow;
 }
 
 .container {
@@ -78,6 +146,7 @@
 .centraliza {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .incremento_um_em_um {
@@ -117,28 +186,6 @@
     font-size: 20px;
 }
 
-.cabecalho_modal {
-    display: flex;
-    justify-content: space-between;
-}
-
-.titulo_modal {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 800;
-    color: #114823;
-    font-size: 24px;
-}
-
-.botao_fecha_modal {
-    background-color: white;
-    border: none;
-    font-size: 24px;
-}
-
-.botao_fecha_modal:hover {
-    cursor: pointer;
-}
-
 .botao_finalizar {
     width: 100%;
     background-image: linear-gradient(to right, #31B55C 0%, #114823 50%);
@@ -150,72 +197,218 @@
     border-radius: 8px;
     border: none;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .botao_finalizar:hover {
     cursor: pointer;
 }
 
-.container_modal {
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: space-around;
-}
-
-.formulario_finaliza_compra {
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .modalContent {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    max-width: 400px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modalHeader {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.nome_campo_formulario {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 800;
-    color: #114823;
-    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
     padding-bottom: 0.5rem;
-}
-
-.input_formulario {
-    font-family: 'Abhaya Libre ExtraBold';
-    color: #114823;
-    font-weight: 400;
-    font-size: 20px;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-}
-
-.input_formulario_file {
-    font-family: 'Abhaya Libre ExtraBold';
-    color: #114823;
-    font-weight: 400;
-    font-size: 20px;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-}
-
-.botao_enviar {
-    background-color: #31B55C;
-    border-color: #31B55C;
-    border-radius: 4px;
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 400;
-    font-size: 20px;
-    color: white;
-}
-
-.botao_enviar:hover {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .modalHeader h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .modalCloseButton {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
     cursor: pointer;
-    background-color: #278a48;
-}
+    color: #aaa;
+  }
+  
+  .modalLine {
+    width: 100%;
+    height: 2px;
+    background-color: #268c48; /* Cor verde da linha */
+    margin: 1rem 0; /* Espaçamento em cima e embaixo da linha */
+  }
+  
+  .modalBody {
+    padding: 1rem 0;
+  }
+  
+  .modalBody p {
+    margin-bottom: 1rem;
+  }
+  
+  .modalInput {
+    width: 95%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .modalButton {
+    background-color: #268c48;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .modalButton:hover {
+    background-color: #195c2f;
+  }
 
-.texto_pix {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-weight: 400;
-    font-size: 18px;
-    padding-bottom: 0.5rem;
-}
 
-.mensagem_comprar {
-    width: 40rem;
-    margin-top: 5rem;
-}
+  /* Estilo para telas menores */
+@media (max-width: 768px) {
+    .imagem_rifa {
+      width: 100%;
+      height: auto;
+    }
+    .container_compra {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      
+      .secao_quantidade {
+        width: auto;
+        max-width: 600px;
+        margin-bottom: 1rem;
+      }
+      
+      .centraliza {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .automaticos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Abhaya Libre';
+        font-weight: 600;
+        font-size: 16px;
+        width: 20rem;
+        color: #CBCBCB;
+        background-color: #31B55C;
+        margin-top: 1rem;
+        border-radius: 8px;
+        border: solid 1px;
+        border-color: yellow;
+        padding: 0.5rem;
+      }
+      
+      .botao_preco {
+        width: 100%;
+        max-width: 400px;
+        background-color: #31B55C;
+        border-radius: 8px;
+        border: none;
+       
+      }
+      
+      .nome_botao_preco {
+        font-family: 'Abhaya Libre';
+        font-weight: 400;
+        font-size: 20px;
+        color: #CBCBCB;
+      }
+      
+      .preco_botao_preco {
+        font-family: 'Abhaya Libre';
+        font-weight: 600;
+        font-size: 28px;
+        color: #CBCBCB;
+      }
+      
+      .incremento_unico {
+        background-color: #278a48;
+        width: 100%;
+        height: auto;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+      }
+      
+      .valor_incremento {
+        font-family: 'Abhaya Libre ExtraBold';
+        font-weight: 800;
+        font-size: 16px;
+        color: #CBCBCB;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      
+      .total_compra {
+        background-color: #278a48;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 1rem;
+        border-radius: 8px;
+        height: auto;
+        font-family: 'Abhaya Libre ExtraBold';
+        font-weight: 400;
+        font-size: 14px;
+        color: white;
+        padding: 0.5rem;
+      }
+      
+      .valor_total {
+        font-weight: 800;
+        font-size: 16px;
+      }
+      
+      .botao_finalizar {
+        width: 100%;
+        max-width: 400px;
+        background-image: linear-gradient(to right, #31B55C 0%, #114823 50%);
+        font-family: 'Abhaya Libre ExtraBold';
+        font-weight: 400;
+        font-size: 20px;
+        color: white;
+        height: auto;
+        border-radius: 8px;
+        border: none;
+        margin-top: 1rem;
+        padding: 0.5rem;
+      }
+
+      .incremento_um_em_um {
+        display: flex;
+        justify-content: space-around;
+        background-color: #114823;
+        width: 100%;
+        border-radius: 16px;
+        height: 4rem;
+    }
+  }
