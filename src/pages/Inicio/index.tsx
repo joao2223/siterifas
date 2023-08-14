@@ -9,6 +9,7 @@ import rifados from '../../assets/Inicio/rifados.jpg';
 import sorte from '../../assets/Inicio/sorte.svg';
 import Modal from 'react-modal';
 import IOrders from '../../interfaces/IOrders';
+import IImagens from '../../interfaces/IImagens';
 
 export default function Inicio() {
     const [rifas, setRifas] = useState<IRifa[]>();
@@ -17,6 +18,7 @@ export default function Inicio() {
     const [resultadosBusca, setResultadosBusca] = useState<IOrders[]>([]);;
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
+    const [imagens, setImagens] = useState<IImagens>();
 
     useEffect(() => {
         axios.get('http://localhost:8080/raffles')
@@ -27,6 +29,18 @@ export default function Inicio() {
                 console.log(erro);
             });
     }, []);
+
+    useEffect(() => {
+        axios.get('http://localhost:8080/home-pages/1')
+            .then(resposta => {
+                setImagens(resposta.data);
+            })
+            .catch(erro => {
+                console.log(erro);
+            });
+    }, []);
+
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/orders')
@@ -59,14 +73,14 @@ export default function Inicio() {
     return (
         <>
             <div className={styles.cabecalho}>
-                <img src={logo} alt="logo paido sorteio" className={styles.logo} />
+                <img src={imagens?.imgLogo} alt="logo paido sorteio" className={styles.logo} />
                 <button className={styles.botao_busca}>
                     <AiOutlineSearch />
                     <p className={styles.nome_botao_busca} onClick={handleOpenModal}>MEUS NÚMEROS</p>
                 </button>
             </div>
 
-            <img src={rifados} alt="" className={styles.imagem_inicio} />
+            <img src={imagens?.imgHomePage} alt="" className={styles.imagem_inicio} />
 
             <div className={styles.centraliza}>
                 <section className={styles.container_rifas}>

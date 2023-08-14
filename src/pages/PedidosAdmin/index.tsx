@@ -298,7 +298,7 @@ export default function PedidosAdmin() {
                                     <td>
                                         <div className={styles.botoes}>
                                             <button className={styles.botao_marcar} onClick={() => alteraStatus(order.client.id, order.client.name, order.client.phone, order.client.file)}>Marcar como pago</button>
-                                            <button className={styles.botao_marcar} onClick = {() => deletarPedido(order.client.id)}>Cancelar pedido</button>
+                                            <button className={styles.botao_marcar} onClick = {() => deletarPedido(order.client.id)}>Deletar pedido</button>
                                         </div>
 
                                     </td>
