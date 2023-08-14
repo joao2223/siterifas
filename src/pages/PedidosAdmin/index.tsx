@@ -21,7 +21,7 @@ export default function PedidosAdmin() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:8080/orders')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/orders')
             .then((response) => {
                 setOrders(response.data);
             })
@@ -29,7 +29,7 @@ export default function PedidosAdmin() {
                 console.log(error);
             });
 
-        axios.get('http://localhost:8080/raffles')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/raffles')
             .then((response) => {
                 setRifas(response.data);
             })
@@ -69,7 +69,7 @@ export default function PedidosAdmin() {
     }, [selectedRifa, orders, rifas]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/raffles')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/raffles')
             .then((response) => {
                 const fetchedRifas = response.data;
                 console.log(fetchedRifas)
@@ -169,7 +169,7 @@ export default function PedidosAdmin() {
     };
 
     const deletarPedido = (id:number) => {
-        axios.delete(`http://localhost:8080/orders/${id}`)
+        axios.delete(`https://site-rifa-70b9f8e109e5.herokuapp.com/orders/${id}`)
         .then(response => {
             console.log(response)
         })
@@ -186,7 +186,7 @@ export default function PedidosAdmin() {
             "userStatus": "TRUE"
         };
 
-        axios.put(`http://localhost:8080/users/${id}`, formData)
+        axios.put(`https://site-rifa-70b9f8e109e5.herokuapp.com/users/${id}`, formData)
             .then(response => {
                 console.log(response);
             })

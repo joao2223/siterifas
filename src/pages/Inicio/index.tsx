@@ -21,7 +21,7 @@ export default function Inicio() {
     const { cor, mudarTema } = useTema();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/raffles')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/raffles')
             .then(resposta => {
                 setRifas(resposta.data);
             })
@@ -31,7 +31,7 @@ export default function Inicio() {
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/home-pages/1')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/home-pages/1')
             .then(resposta => {
                 setImagens(resposta.data);
             })
@@ -43,7 +43,7 @@ export default function Inicio() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:8080/orders')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/orders')
             .then(resposta => {
                 setOrders(resposta.data);
                 console.log(resposta)

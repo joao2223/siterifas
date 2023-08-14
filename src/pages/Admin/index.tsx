@@ -52,9 +52,7 @@ function Admin() {
                     className={styles.input_modal}
                 />
                 <button onClick={handleModalClose} className={styles.botao_entrar}>Entrar</button>
-            </Modal>
-
-            
+            </Modal> 
         </>
     );
 }

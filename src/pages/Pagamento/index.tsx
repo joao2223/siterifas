@@ -20,7 +20,7 @@ export default function Pagamento() {
     const { cor, mudarTema } = useTema();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/orders')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/orders')
             .then(resposta => {
                 setOrders(resposta.data);
                 console.log(resposta)
@@ -31,7 +31,7 @@ export default function Pagamento() {
     }, []);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/orders/${clientId}`)
+        axios.get(`https://site-rifa-70b9f8e109e5.herokuapp.com/orders/${clientId}`)
             .then((response) => {
                 setOrder(response.data);
                 console.log(order)
@@ -50,7 +50,7 @@ export default function Pagamento() {
 
         const formData = { "name": name, "phone": phone, "file": 'enviado, verificar', 'userStatus': "FALSE" }
 
-        axios.put(`http://localhost:8080/users/${id}`, formData)
+        axios.put(`https://site-rifa-70b9f8e109e5.herokuapp.com/users/${id}`, formData)
             .then((response) => {
                 navigate('/', { replace: true })
             })

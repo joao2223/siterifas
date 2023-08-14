@@ -15,7 +15,7 @@ export default function Consulta() {
     const { cor, mudarTema } = useTema();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/orders')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/orders')
             .then((resposta) => {
                 const rifas = resposta.data;
                 const rifasComTelefone = rifas.filter((rifa: { client: { phone: any; } }) => rifa.client.phone === telefone);
@@ -33,7 +33,7 @@ export default function Consulta() {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                await axios.put(`http://localhost:8080/users/${rifasEncontradas[index].client.id}`, {
+                await axios.put(`https://site-rifa-70b9f8e109e5.herokuapp.com/users/${rifasEncontradas[index].client.id}`, {
                     name: rifasEncontradas[index].client.name,
                     phone: rifasEncontradas[index].client.phone,
                     file: 'enviado',

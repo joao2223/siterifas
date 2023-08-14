@@ -46,7 +46,7 @@ export default function Compra() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:8080/orders')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/orders')
             .then(resposta => {
                 setOrders(resposta.data);
                 console.log(resposta)
@@ -57,7 +57,7 @@ export default function Compra() {
     }, []);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/raffles/${id}`)
+        axios.get(`https://site-rifa-70b9f8e109e5.herokuapp.com/raffles/${id}`)
             .then((resposta) => {
                 setRifa(resposta.data);
             })
@@ -67,7 +67,7 @@ export default function Compra() {
     }, [id]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/raffles/${id}/remaining`)
+        axios.get(`https://site-rifa-70b9f8e109e5.herokuapp.com/raffles/${id}/remaining`)
             .then((resposta) => {
                 setQuantidadeRifas(resposta.data);
             })
@@ -94,7 +94,7 @@ export default function Compra() {
 
         const formData = { "name": name, "phone": phone, "file": "", "userStatus" : "FALSE"}
 
-        axios.post("http://localhost:8080/users", formData)
+        axios.post("https://site-rifa-70b9f8e109e5.herokuapp.com/users", formData)
             .then((response) => {
                 console.log(response.data);
                 const idGeradoPeloPrimeiroPost = response.data.id;
@@ -110,7 +110,7 @@ export default function Compra() {
         const formData = { "clientId": clientId }
         console.log(formData)
 
-        axios.post("http://localhost:8080/orders", formData)
+        axios.post("https://site-rifa-70b9f8e109e5.herokuapp.com/orders", formData)
             .then((response) => {
                 console.log(response.data);
                 realizarTerceiroPost(clientId);
@@ -124,7 +124,7 @@ export default function Compra() {
     const realizarTerceiroPost = (clientId: number) => {
         const formData = { "orderId": clientId , "raffleId": id, "quantity": quantidade }
         console.log(formData);
-        axios.post("http://localhost:8080/order-items", formData)
+        axios.post("https://site-rifa-70b9f8e109e5.herokuapp.com/order-items", formData)
             .then((response) => {
                 console.log(response.data);
                 navigate(`/paginaPagamento/${clientId}`);
@@ -162,7 +162,7 @@ export default function Compra() {
                     </div>
                     <div className={styles.automaticos}>
                         <CiWarning />
-                        <div>
+                        <div >
                             <p>Número automáticos</p>
                         </div>
                     </div>

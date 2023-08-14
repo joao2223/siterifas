@@ -11,7 +11,7 @@ export default function ConfigAdmin() {
     const[imagens, setImagens] = useState<IImagens>();
 
     useEffect(() => {
-        axios.get('http://localhost:8080/home-pages/1')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/home-pages/1')
             .then(resposta => {
                 setImagens(resposta.data);
             })
@@ -28,7 +28,7 @@ export default function ConfigAdmin() {
             imgLogo: imgLogo,
         };
 
-        axios.put('http://localhost:8080/home-pages/1', requestData)
+        axios.put('https://site-rifa-70b9f8e109e5.herokuapp.com/home-pages/1', requestData)
             .then((resposta) => {
                 setImgHomePage(imgHomePage);
                 setImgLogo(imgLogo);

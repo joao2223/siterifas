@@ -19,7 +19,7 @@ export default function RifasAdmin() {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:8080/raffles')
+        axios.get('https://site-rifa-70b9f8e109e5.herokuapp.com/raffles')
             .then(resposta => {
                 setRifas(resposta.data);
             })
@@ -33,7 +33,7 @@ export default function RifasAdmin() {
         const priceNumber = parseFloat(price.replace("R$", "").replace(",", "."));
 
         if (raffleStatus == "OPEN") {
-            axios.put(`http://localhost:8080/raffles/${id}`, {
+            axios.put(`https://site-rifa-70b9f8e109e5.herokuapp.com/raffles/${id}`, {
                 "quantity": quantity,
                 "name": name,
                 "description": description,
@@ -50,7 +50,7 @@ export default function RifasAdmin() {
                 });
         }
         else {
-            axios.put(`http://localhost:8080/raffles/${id}`, {
+            axios.put(`https://site-rifa-70b9f8e109e5.herokuapp.com/raffles/${id}`, {
                 "quantity": quantity,
                 "name": name,
                 "description": description,
@@ -78,7 +78,7 @@ export default function RifasAdmin() {
     };
 
     const handleCreateRifa = () => {
-        axios.post('http://localhost:8080/raffles', newRifa)
+        axios.post('https://site-rifa-70b9f8e109e5.herokuapp.com/raffles', newRifa)
             .then(response => {
                 console.log('Rifa criada:', response.data);
                 setNewRifa({
