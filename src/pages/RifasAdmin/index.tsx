@@ -124,7 +124,6 @@ export default function RifasAdmin() {
                                 >
                                     {rifa.raffleStatus == "OPEN" ? "Fechar rifa" : "Abrir rifa"}
                                 </button>
-                                <button className={styles.botao_modificar}>Modificar rifa</button>
                             </div>
                         </div>
                     ))}

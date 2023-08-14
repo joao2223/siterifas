@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import QRCode from 'qrcode.react';
 import styles from './Pagamento.module.scss';
-import { AiOutlineSearch } from 'react-icons/ai';
-import style from '../Inicio/Inicio.module.scss';
 import styl from '../Consulta/Consulta.module.scss';
-import logo from '../../assets/logo.svg'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import IOrder from '../../interfaces/IOrders';
 import { Modal } from 'react-bootstrap';
 import IOrders from '../../interfaces/IOrders';
+import Cabecalho from '../../components/Cabecalho';
+import { useTema } from '../../temaContext';
 
 export default function Pagamento() {
 
     const { clientId } = useParams();
     const valorPix = 'chavePIX@exemplo.com.br';
-    const [termoDeBusca, setTermoDeBusca] = useState<string>("");
-    const [resultadosBusca, setResultadosBusca] = useState<IOrders[]>([]);;
     const navigate = useNavigate();
     const [order, setOrder] = useState<IOrder>();
     const [orders, setOrders] = useState<IOrders[]>();
-    const [showModal, setShowModal] = useState(false);
+    const { cor, mudarTema } = useTema();
 
     useEffect(() => {
         axios.get('http://localhost:8080/orders')
@@ -62,28 +59,10 @@ export default function Pagamento() {
             });
     };
 
-    function procurarCliente() {
-        const resultados = orders?.filter(order => order.client.phone === termoDeBusca);
-        setResultadosBusca(resultados || []);
-    }
-
-    function handleOpenModal() {
-        setShowModal(true);
-    }
-
-    function handleCloseModal() {
-        setShowModal(false);
-    }
-
     return (
-        <>
-            <div className={style.cabecalho}>
-                <img src={logo} alt="logo paido sorteio" className={style.logo} />
-                <button className={style.botao_busca}>
-                    <AiOutlineSearch />
-                    <p className={style.nome_botao_busca} onClick={handleOpenModal}>MEUS NÚMEROS</p>
-                </button>
-            </div>
+        <div className={cor == 'escuro' ? styles.dark : styles.light}>
+            <Cabecalho />
+
             <div className={styles.container}>
                 <div className={styles.pagamento}>
                     <p className={styles.titulo_pagamento}>Pagamento via pix</p>
@@ -121,35 +100,7 @@ export default function Pagamento() {
                 </div>
             </div>
 
-            <Modal
-                isOpen={showModal}
-                onRequestClose={handleCloseModal}
-                contentLabel="Login"
-                className={styles.modalContent}
-                overlayClassName={styles.modalOverlay}
-            >
-                <div className={styles.modalHeader}>
-                    <h2>Login</h2>
-                    <button className={styles.modalCloseButton} onClick={handleCloseModal}>
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <hr className={styles.modalLine} />
-                <p>Para consultar seus pedidos, digite o número de WhatsApp usado na hora da compra:</p>
-                <input
-                    type="text"
-                    name="Telefone"
-                    className={styles.modalInput}
-                    value={termoDeBusca}
-                    onChange={(e) => setTermoDeBusca(e.target.value)}
-                />
-                <button className={styles.modalButton} onClick={() => {
-                    procurarCliente();
-                    navigate(`/consulta`, { state: { telefone: termoDeBusca } });
-                }}>Consultar</button>
-            </Modal>
-
-        </>
+        </div>
     );
 }
 

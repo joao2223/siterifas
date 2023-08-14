@@ -3,13 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from './Compra.module.scss';
 import logo from '../../assets/logo.svg';
-import { AiOutlineSearch } from 'react-icons/ai';
 import IRifa from '../../interfaces/IRifa';
 import { CiWarning } from 'react-icons/ci';
 import selecionar from '../../assets/Compra/selecionar.svg';
 import Modal from 'react-modal';
-import style from '../Inicio/Inicio.module.scss'
 import IOrders from '../../interfaces/IOrders';
+import Cabecalho from '../../components/Cabecalho';
+import { useTema } from '../../temaContext';
 
 export default function Compra() {
     const { id } = useParams();
@@ -21,7 +21,7 @@ export default function Compra() {
     const [orders, setOrders] = useState<IOrders[]>();
     const [quantidadeRifas, setQuantidadeRifas] = useState(Number)
     const navigate = useNavigate()
-
+    const { cor, mudarTema } = useTema();
 
     function redirecionarParaPaginaComprarAgora(id: number) {
         navigate('/paginaComprarAgora', {replace : true})
@@ -32,10 +32,6 @@ export default function Compra() {
         setQuantidade((prevQuantidade) => prevQuantidade + valorIncremento);
     };
 
-    function procurarCliente() {
-        const resultados = orders?.filter(order => order.client.phone === termoDeBusca);
-        setResultadosBusca(resultados || []);
-    }
 
     const decrementar = (valorIncremento: number) => {
         setQuantidade((prevQuantidade) => Math.max(prevQuantidade - valorIncremento, 0));
@@ -148,21 +144,15 @@ export default function Compra() {
     };
 
     return (
-        <>
-            <div className={style.cabecalho}>
-                <img src={logo} alt="logo paido sorteio" className={style.logo} />
-                <button className={style.botao_busca} onClick={handleOpenModal}>
-                    <AiOutlineSearch />
-                    <p className={style.nome_botao_busca}>MEUS NÚMEROS</p>
-                </button>
-            </div>
+        <div className={cor == 'escuro' ? styles.dark : styles.light}>
+            <Cabecalho/>
 
             <section className={styles.container_compra}>
                 <img src={rifa.imgUrl} alt={rifa.description} className={styles.imagem_rifa} />
                 <div>
                     <div>
-                        <p className={styles.descricao_rifa}>{rifa.description}</p>
-                        <p className={styles.descricao_rifa}>Quantidade de rifas disponíveis: {quantidadeRifas} </p>
+                        <p className={styles.descricao_rifa} style={cor == 'escuro' ? { color: '#CBCBCB' } : {color: ''}}>{rifa.description}</p>
+                        <p className={styles.descricao_rifa} style={cor == 'escuro' ? { color: '#CBCBCB' } : {color: ''}}>Quantidade de rifas disponíveis: {quantidadeRifas}</p>
                     </div>
                     <div>
                         <button className={styles.botao_preco}>
@@ -178,7 +168,7 @@ export default function Compra() {
                     </div>
                     <div className={styles.centraliza}>
                         <div className={styles.secao_quantidade}>
-                            <p className={styles.titulo_modal}>Compre a sua cota</p>
+                            <p className={styles.titulo_modal} style={cor == 'escuro' ? { color: '#CBCBCB' } : {color: ''}}>Compre a sua cota</p>
                             <div className={styles.quantidade_escolha}>
                                 <div className={styles.container}>
                                     <div className={styles.incremento}>
@@ -235,34 +225,6 @@ export default function Compra() {
             </section>
 
             <Modal
-                isOpen={showModal}
-                onRequestClose={handleCloseModal}
-                contentLabel="Login"
-                className={style.modalContent}
-                overlayClassName={style.modalOverlay}
-            >
-                <div className={style.modalHeader}>
-                    <h2>Login</h2>
-                    <button className={style.modalCloseButton} onClick={handleCloseModal}>
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <hr className={style.modalLine} />
-                <p>Para consultar seus pedidos, digite o número de WhatsApp usado na hora da compra:</p>
-                <input
-                    type="text"
-                    name="Telefone"
-                    className={style.modalInput}
-                    value={termoDeBusca}
-                    onChange={(e) => setTermoDeBusca(e.target.value)}
-                />
-                <button className={style.modalButton} onClick={() => {
-                    procurarCliente();
-                    navigate(`/consulta`, { state: { telefone: termoDeBusca } });
-                }}>Consultar</button>
-            </Modal>
-
-            <Modal
                 isOpen={checkoutModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Finalizar Compra"
@@ -290,6 +252,6 @@ export default function Compra() {
                     </div>
                 </div>
             </Modal>
-        </>
+        </div>
     );
 }

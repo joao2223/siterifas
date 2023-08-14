@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import IRifa from '../../interfaces/IRifa';
-import styles from './Inicio.module.scss';
-import sorte from '../../assets/Inicio/sorte.svg';
+import styles from './Cabecalho.module.scss';
 import Modal from 'react-modal';
 import IOrders from '../../interfaces/IOrders';
 import IImagens from '../../interfaces/IImagens';
-import Cabecalho from '../../components/Cabecalho';
-import { useTema } from '../../temaContext';
+import { BsMoon, BsSun } from 'react-icons/bs';
+import { useTema } from '../../temaContext'; // Importe o hook useTema
 
 export default function Inicio() {
     const [rifas, setRifas] = useState<IRifa[]>();
@@ -17,7 +17,7 @@ export default function Inicio() {
     const [resultadosBusca, setResultadosBusca] = useState<IOrders[]>([]);;
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
-    const [imagens, setImagens] = useState<IImagens>();
+    const [imagens, setImagens] = useState<IImagens>()
     const { cor, mudarTema } = useTema();
 
     useEffect(() => {
@@ -39,8 +39,6 @@ export default function Inicio() {
                 console.log(erro);
             });
     }, []);
-
-
 
     useEffect(() => {
         axios.get('http://localhost:8080/orders')
@@ -71,34 +69,19 @@ export default function Inicio() {
     }
 
     return (
-        <div className={cor == 'escuro'? styles.dark : styles.white}>
-            <Cabecalho/>
-            <img src={imagens?.imgHomePage} alt="" className={styles.imagem_inicio} />
+        <>
+            <div className={styles.cabecalho}>
+                <img src={imagens?.imgLogo} alt="logo paido sorteio" className={styles.logo} />
+                <button className={styles.botao_busca}>
+                    <AiOutlineSearch />
+                    <p className={styles.nome_botao_busca} onClick={handleOpenModal}>MEUS NÚMEROS</p>
+                </button>
 
-            <div className={styles.centraliza}>
-                <section className={styles.container_rifas}>
-                    <div className={styles.titulo_secao}>
-                        <img src={sorte} alt="" className={styles.sorte} />
-                        <div className={styles.texto_mais_titulo_rifas}>
-                            <p className={styles.texto_titulo_rifas}>NOSSAS PREMIAÇÕES</p>
-                        </div>
-                    </div>
-                    <div className={styles.centraliza}>
-                        {rifas?.map((rifa) => (
-                            rifa.raffleStatus === 'OPEN' && (
-                                <button key={rifa.id} className={styles.card} onClick={() => redirecionarParaCompra(rifa.id)}>
-                                    <img src={rifa.imgUrl} alt={rifa.description} className={styles.imagem_rifa} />
-                                    <div className={styles.container_rifas_info}>
-                                        <p className={styles.descricao}>{rifa.description}</p>
-                                        <p className={styles.preco}>{rifa.price}</p>
-                                        <button className={styles.disponivel}>Disponível</button>
-                                    </div>
-                                </button>
-                            )
-                        ))}
-                    </div>
-                </section>
+                <button onClick={() => mudarTema()} className={styles.botao_muda_tema} >{cor == 'escuro' ? <BsMoon size={20} /> : <BsSun size={20} />}</button>
+
             </div>
+
+
 
             <Modal
                 isOpen={showModal}
@@ -127,6 +110,6 @@ export default function Inicio() {
                     navigate(`/consulta`, { state: { telefone: termoDeBusca } });
                 }}>Consultar</button>
             </Modal>
-        </div>
+        </>
     );
 }

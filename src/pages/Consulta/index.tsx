@@ -1,21 +1,18 @@
-import style from '../Inicio/Inicio.module.scss';
-import logo from '../../assets/logo.svg';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Consulta.module.scss'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import IOrder from '../../interfaces/IOrders';
-
+import Cabecalho from '../../components/Cabecalho';
+import { useTema } from '../../temaContext';
 
 export default function Consulta() {
     const location = useLocation();
     const telefone = location.state?.telefone || '';
-    const [showModal, setShowModal] = useState(false);
-    const [showModalIndex, setShowModalIndex] = useState(-1);
     const [rifasEncontradas, setRifasEncontradas] = useState<IOrder[]>([]);
     const [comprovantesUploaded, setComprovantesUploaded] = useState<{ [key: number]: boolean }>({});
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const { cor, mudarTema } = useTema();
 
     useEffect(() => {
         axios.get('http://localhost:8080/orders')
@@ -52,23 +49,9 @@ export default function Consulta() {
         }
     };
 
-    function handleOpenModal() {
-        setShowModal(true);
-    }
-
-    function handleCloseModal() {
-        setShowModal(false);
-    }
-
     return (
-        <>
-            <div className={style.cabecalho}>
-                <img src={logo} alt="logo paido sorteio" className={style.logo} />
-                <button className={style.botao_busca}>
-                    <AiOutlineSearch />
-                    <p className={style.nome_botao_busca} onClick={handleOpenModal}>MEUS NÚMEROS</p>
-                </button>
-            </div>
+        <div className={cor == 'escuro' ? styles.dark : styles.light}>
+            <Cabecalho/>
 
             <div className={styles.centraliza}>
                 <div className={styles.container_consulta}>
@@ -120,6 +103,6 @@ export default function Consulta() {
 
                 </div>
             </div>
-        </>
+        </div>
     );
 }
